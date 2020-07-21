@@ -45,7 +45,7 @@
             for (var i = 0; i < pre.length; i++) {
                 let hello_date = pre[i].replace(traffic, '$1')
                 let hello_bytes = pre[i].replace(traffic, '$2')
-                let hello_mbytes = parseInt((hello_bytes / 1024) / 1024);
+                let hello_mbytes = Math.ceil((hello_bytes / 1024) / 1024);
                 console.log(`${hello_date},${hello_mbytes}`);
                 count.value = count.value + hello_mbytes;
                 document.getElementById('count').innerHTML = `Израсходовано: ${count.value} Мб / ${(count.value / 1024).toFixed(2)} Гб`;
@@ -61,8 +61,7 @@
 <body>
     <div class="wrapper">
         <h1 id="count"></h1>
-        <textarea id="csv" placeholder="Скопируй содержимое PDF с детализацией сюда">
-        </textarea>
+        <textarea id="csv" placeholder="Скопируй содержимое PDF с детализацией сюда"></textarea>
         <button onclick="regexp()">Посчитать</button>
     </div>
 </body>
